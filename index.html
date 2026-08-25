@@ -11,19 +11,16 @@
     body{
       font-family:'Hind Siliguri', sans-serif; 
       color:#333;
-      /* এখানেই তোমার ছবিটা ব্যাকগ্রাউন্ড */
-      background: url('https://i.ibb.co.com/your-image-link.png') no-repeat center center fixed;
-      background-size: cover;
+      /* এখানে তোমার ছবিটা */
+      background: url('https://i.ibb.co/1870398114371374/petni-cute-girl.png') no-repeat center top fixed;
+      background-size: contain;
+      background-color: #FFF5F9;
       background-attachment: fixed;
     }
     
-    /* উপরে সাদা ট্রান্সপারেন্ট লেয়ার যাতে লেখা বোঝা যায় */
-    .overlay{
-      background: rgba(255, 245, 249, 0.92);
-      min-height: 100vh;
-    }
+    .overlay{background: rgba(255, 245, 249, 0.88); min-height: 100vh;}
 
-    header{background:linear-gradient(90deg,rgba(255,102,179,0.95),rgba(255,51,153,0.95)); color:#fff; padding:25px; text-align:center; backdrop-filter: blur(5px);}
+    header{background:linear-gradient(90deg,rgba(255,102,179,0.95),rgba(255,51,153,0.95)); color:#fff; padding:25px; text-align:center; backdrop-filter: blur(5px); margin-top:300px;}
     header h1{font-size:2.8rem;}
     header p{font-size:1.1rem; margin-top:5px;}
     
@@ -87,34 +84,4 @@
 
   <div class="form-section" id="orderForm" style="display:none;">
     <h2>অর্ডার কনফার্ম করুন 📝</h2>
-    
-    <div class="cod-box">
-      ✅ Cash On Delivery<br>
-      <small>পণ্য হাতে পেয়ে টাকা দিবেন</small>
-    </div>
-
-    <div class="form-group"><label>আপনার নাম *</label><input type="text" id="name" placeholder="পুরো নাম"></div>
-    <div class="form-group"><label>মোবাইল নাম্বার *</label><input type="tel" id="phone" placeholder="01XXXXXXXXX"></div>
-    <div class="form-group"><label>সম্পূর্ণ ঠিকানা *</label><input type="text" id="address" placeholder="বাড়ি, রোড, থানা"></div>
-    <div class="form-group"><label>জেলা *</label>
-      <select id="district">
-        <option>Rajshahi</option><option>Dhaka</option><option>Chittagong</option><option>Khulna</option><option>Sylhet</option>
-      </select>
-    </div>
-
-    <button class="place-order" onclick="placeOrder()">WhatsApp এ অর্ডার পাঠান 💚</button>
-  </div>
-</div>
-
-<a href="https://wa.me/8801312101940" class="whatsapp" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="38">
-</a>
-
-<footer>
-  <p>👻 পেত্নী | WhatsApp: 01312101940 | COD সারা বাংলাদেশ 💖</p>
-</footer>
-
-</div> <!-- overlay sesh -->
-<script>
-let selectedProduct = '';
-let selectedPrice
+    <div class="cod-box">✅ Cash On Delivery<br><small>প
