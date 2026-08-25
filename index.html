@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>পেত্নী | Petni Jewelry</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@700;800&display=swap');
+    body{background:#0a0a0a; color:#fff; font-family:'Baloo Da 2', sans-serif; margin:0;}
+    .hero{background:linear-gradient(135deg,#1a001a 0%,#000 100%); padding:100px 20px; text-align:center;}
+    .hero h1{font-size:7rem; color:#ff00ff; text-shadow:0 0 20px #ff00ff, 0 0 40px #ff00ff;}
+    .hero p{font-size:1.5rem; color:#ffb3ff;}
+    .product{display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:60px 20px; background:#111;}
+    .card{background:#1a1a1a; width:300px; border-radius:25px; padding:20px; border:2px solid #ff00ff; box-shadow:0 0 25px rgba(255,0,255,0.3); transition:0.3s;}
+    .card:hover{transform:scale(1.05); box-shadow:0 0 40px rgba(255,0,255,0.6);}
+    .card img{width:100%; height:300px; object-fit:cover; border-radius:20px; background:#333;}
+    .card h3{color:#ff66ff; margin:15px 0;}
+    .price{font-size:2rem; color:#ff00ff; font-weight:800;}
+    .order{background:#000; padding:50px 20px; text-align:center;}
+    .order h2{font-size:2.5rem; color:#ff00ff; margin-bottom:30px;}
+    .form-box{max-width:500px; margin:auto; background:#1a1a1a; padding:30px; border-radius:25px; border:2px solid #ff00ff;}
+    input, textarea{width:100%; padding:14px; margin:10px 0; background:#000; border:2px solid #ff00ff; border-radius:12px; color:#fff; font-size:1rem;}
+    .btns{display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:25px;}
+    .btn{padding:18px 35px; border-radius:50px; font-size:1.1rem; font-weight:800; text-decoration:none; border:none; cursor:pointer;}
+    .cod{background:linear-gradient(90deg,#00ff88,#00ccff); color:#000;}
+    .bkash{background:linear-gradient(90deg,#E2136E,#ff00ff); color:#fff;}
+  </style>
+</head>
+<body>
 
+  <section class="hero">
+    <h1>👻 পেত্নী 👻</h1>
+    <p>রাত ১২ টার পর অর্ডার করলে ফ্রি ডেলিভারি 🌙</p>
+  </section>
+
+  <section class="product">
+    <div class="card">
+      <img src="https://i.ibb.co.com/4gB5W8q/ring.jpg">
+      <h3>Dark Heart Ring</h3>
+      <p class="price">৳ 450</p>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co.com/2kQ1X9m/earring.jpg">
+      <h3>Ghost Pearl Earring</h3>
+      <p class="price">৳ 450</p>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co.com/0XJ0v1L/necklace.jpg">
+      <h3>Midnight Necklace</h3>
+      <p class="price">৳ 450</p>
+    </div>
+  </section>
+
+  <section class="order">
+    <h2>অর্ডার করো পেত্নী 👻</h2>
+    <div class="form-box">
+      <input type="text" id="name" placeholder="তোমার নাম" required>
+      <input type="tel" id="phone" placeholder="মোবাইল 01XXXXXXXXX" required>
+      <input type="text" id="district" placeholder="জেলা" required>
+      <textarea id="address" placeholder="থানা + পুরো ঠিকানা" required></textarea>
+      <input type="text" id="product" placeholder="কোনটা নিবা?" required>
+      
+      <div class="btns">
+        <button onclick="sendOrder('COD')" class="btn cod">COD তে অর্ডার দাও</button>
+        <a href="bkash://send?receiver=01312101940&amount=450" onclick="sendOrder('bKash')" class="btn bkash">bKash 450 টাকা</a>
+      </div>
+    </div>
+    <p style="margin-top:20px; color:#ff00ff;"><b>বিকাশ: 01312101940</b></p>
+  </section>
+
+<script>
+function sendOrder(type) {
+  let name = document.getElementById('name').value;
+  let phone = document.getElementById('phone').value;
+  let district = document.getElementById('district').value;
+  let address = document.getElementById('address').value;
+  let product = document.getElementById('product').value;
+  if(name=='' || phone=='' || district=='' || address=='' || product==''){ alert('সব ঘর ভরো পেত্নী 😈'); return; }
+  let message = `নতুন অর্ডার - পেত্নী%0A%0Aপেমেন্ট: ${type}%0Aনাম: ${name}%0Aফোন: ${phone}%0Aজেলা: ${district}%0Aঠিকানা: ${address}%0Aপ্রোডাক্ট: ${product} - ৳450`;
+  window.open(`https://wa.me/8801312101940?text=${message}`, '_blank');
+}
+</script>
+
+</body>
+      </html>
