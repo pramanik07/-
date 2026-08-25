@@ -1,87 +1,1138 @@
+```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>পেত্নী | Petni Jewelry</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap');
-    *{margin:0; padding:0; box-sizing:border-box;}
-    
-    body{
-      font-family:'Hind Siliguri', sans-serif; 
-      color:#333;
-      /* এখানে তোমার ছবিটা */
-      background: url('https://i.ibb.co/1870398114371374/petni-cute-girl.png') no-repeat center top fixed;
-      background-size: contain;
-      background-color: #FFF5F9;
-      background-attachment: fixed;
-    }
-    
-    .overlay{background: rgba(255, 245, 249, 0.88); min-height: 100vh;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    header{background:linear-gradient(90deg,rgba(255,102,179,0.95),rgba(255,51,153,0.95)); color:#fff; padding:25px; text-align:center; backdrop-filter: blur(5px); margin-top:300px;}
-    header h1{font-size:2.8rem;}
-    header p{font-size:1.1rem; margin-top:5px;}
-    
-    .container{max-width:1200px; margin:auto; padding:40px 15px;}
-    .products{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:30px;}
-    
-    .card{background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 8px 25px rgba(255,102,179,0.25); transition:0.4s; border:2px solid #FFE0F0;}
-    .card:hover{transform:translateY(-8px) scale(1.02);}
-    .card img{width:100%; height:350px; object-fit:cover;}
-    .card-body{padding:20px;}
-    .category{font-size:0.9rem; color:#FF66B3; font-weight:600;}
-    .title{font-size:1.3rem; font-weight:700; margin:8px 0;}
-    .price{font-size:1.5rem; font-weight:800; color:#FF0099; margin-bottom:15px;}
-    .btn-order{width:100%; padding:16px; border:none; border-radius:12px; font-size:1.1rem; font-weight:800; cursor:pointer; background:linear-gradient(90deg,#FF66B3,#FF3399); color:#fff;}
-    
-    .form-section{background:rgba(255,255,255,0.95); padding:40px 25px; margin-top:60px; border-radius:20px; box-shadow:0 8px 25px rgba(255,102,179,0.2); border:2px solid #FFE0F0; backdrop-filter: blur(8px);}
-    .form-section h2{margin-bottom:25px; color:#FF0099; border-bottom:3px solid #FF66B3; padding-bottom:10px; text-align:center;}
-    .form-group{margin-bottom:18px;}
-    .form-group label{display:block; font-weight:700; margin-bottom:6px; color:#FF3399;}
-    .form-group input, .form-group select{width:100%; padding:14px; border:2px solid #FFE0F0; border-radius:12px; font-size:1rem; background:#FFF5F9;}
-    
-    .cod-box{background:#FFE0F0; padding:15px; border-radius:12px; text-align:center; margin:20px 0; font-weight:700; color:#FF0099;}
-    
-    .place-order{width:100%; padding:18px; background:linear-gradient(90deg,#25D366,#20B954); color:#fff; border:none; border-radius:15px; font-size:1.3rem; font-weight:800; margin-top:20px; cursor:pointer;}
-    
-    .whatsapp{position:fixed; bottom:20px; right:20px; background:#25D366; width:65px; height:65px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 5px 20px rgba(37,211,102,0.5);}
-    
-    footer{background:linear-gradient(90deg,rgba(255,102,179,0.95),rgba(255,51,153,0.95)); color:#fff; text-align:center; padding:25px; margin-top:60px; font-weight:600; backdrop-filter: blur(5px);}
+  <title>পেত্নী ফ্যাশন | Premium Fashion Store</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#090909;
+      --card:#121212;
+      --soft:#1a1a1a;
+      --gold:#d7ae67;
+      --gold2:#f1d49c;
+      --text:#f7f4ef;
+      --muted:#aaa39a;
+      --line:rgba(255,255,255,.09);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Noto Sans Bengali",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    button{
+      font-family:inherit;
+      cursor:pointer;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    /* TOP BAR */
+    .announcement{
+      background:var(--gold);
+      color:#111;
+      text-align:center;
+      padding:10px;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    /* NAVBAR */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(9,9,9,.88);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav-wrap{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .logo{
+      font-family:"Playfair Display",serif;
+      font-size:30px;
+      font-weight:700;
+      letter-spacing:-1px;
+    }
+
+    .logo span{
+      color:var(--gold);
+    }
+
+    .nav-links{
+      display:flex;
+      list-style:none;
+      gap:28px;
+      color:#c8c1b8;
+      font-size:14px;
+    }
+
+    .nav-links a:hover{
+      color:var(--gold2);
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .cart-btn{
+      background:transparent;
+      border:1px solid var(--line);
+      color:white;
+      padding:10px 15px;
+      border-radius:100px;
+    }
+
+    .cart-count{
+      background:var(--gold);
+      color:#111;
+      width:20px;
+      height:20px;
+      display:inline-grid;
+      place-items:center;
+      border-radius:50%;
+      font-size:11px;
+      font-weight:800;
+      margin-left:5px;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:82vh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.68)),
+        url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at center,transparent 20%,rgba(0,0,0,.65));
+      z-index:-1;
+    }
+
+    .hero-content{
+      text-align:center;
+      max-width:850px;
+      padding:100px 20px;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-size:12px;
+      margin-bottom:20px;
+    }
+
+    h1,h2,h3{
+      font-family:"Playfair Display","Noto Sans Bengali",serif;
+    }
+
+    .hero h1{
+      font-size:clamp(48px,8vw,105px);
+      line-height:.95;
+      letter-spacing:-4px;
+    }
+
+    .hero p{
+      max-width:620px;
+      margin:28px auto;
+      color:#ddd5cb;
+      font-size:17px;
+      line-height:1.9;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:15px 25px;
+      border-radius:100px;
+      border:1px solid transparent;
+      transition:.3s ease;
+      font-weight:700;
+    }
+
+    .btn-gold{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .btn-gold:hover{
+      transform:translateY(-3px);
+      background:var(--gold2);
+    }
+
+    .btn-outline{
+      border-color:rgba(255,255,255,.3);
+      color:white;
+      margin-left:8px;
+    }
+
+    .btn-outline:hover{
+      background:white;
+      color:black;
+    }
+
+    /* SECTION */
+    section{
+      padding:100px 0;
+    }
+
+    .section-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:30px;
+      margin-bottom:42px;
+    }
+
+    .section-top small{
+      color:var(--gold);
+      letter-spacing:3px;
+      text-transform:uppercase;
+    }
+
+    .section-top h2{
+      font-size:clamp(36px,5vw,62px);
+      margin-top:8px;
+      letter-spacing:-2px;
+    }
+
+    .section-top p{
+      color:var(--muted);
+      max-width:450px;
+      line-height:1.8;
+    }
+
+    /* COLLECTION */
+    .collection-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr .9fr;
+      gap:18px;
+    }
+
+    .collection{
+      min-height:470px;
+      position:relative;
+      border-radius:22px;
+      overflow:hidden;
+      display:flex;
+      align-items:end;
+      padding:30px;
+      background-size:cover;
+      background-position:center;
+      transition:.5s;
+    }
+
+    .collection:hover{
+      transform:translateY(-6px);
+    }
+
+    .collection::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(transparent 35%,rgba(0,0,0,.85));
+    }
+
+    .collection-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .collection h3{
+      font-size:34px;
+    }
+
+    .collection p{
+      color:#ddd;
+      margin:8px 0 16px;
+      font-size:14px;
+    }
+
+    .c1{
+      background-image:url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .c2{
+      background-image:url("https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .c3{
+      background-image:url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    /* PRODUCTS */
+    .products{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .product{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      transition:.3s;
+    }
+
+    .product:hover{
+      transform:translateY(-7px);
+      border-color:rgba(215,174,103,.5);
+    }
+
+    .product-img{
+      height:330px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .product-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.6s;
+    }
+
+    .product:hover img{
+      transform:scale(1.08);
+    }
+
+    .tag{
+      position:absolute;
+      top:15px;
+      left:15px;
+      background:var(--gold);
+      color:#111;
+      font-size:10px;
+      font-weight:800;
+      padding:7px 10px;
+      border-radius:100px;
+    }
+
+    .product-info{
+      padding:18px;
+    }
+
+    .product-info h3{
+      font-size:19px;
+    }
+
+    .price{
+      color:var(--gold2);
+      font-weight:800;
+      margin:7px 0 15px;
+    }
+
+    .add-cart{
+      width:100%;
+      border:1px solid var(--line);
+      background:transparent;
+      color:white;
+      padding:12px;
+      border-radius:10px;
+      transition:.3s;
+    }
+
+    .add-cart:hover{
+      background:var(--gold);
+      color:#111;
+      border-color:var(--gold);
+    }
+
+    /* FEATURE STRIP */
+    .feature-strip{
+      background:#111;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+    }
+
+    .feature{
+      padding:35px 25px;
+      border-right:1px solid var(--line);
+      text-align:center;
+    }
+
+    .feature:last-child{
+      border:none;
+    }
+
+    .feature b{
+      display:block;
+      margin-bottom:6px;
+    }
+
+    .feature span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* STORY */
+    .story{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .story-image{
+      min-height:600px;
+      border-radius:24px;
+      background:
+        url("https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+    }
+
+    .story-content small{
+      color:var(--gold);
+      letter-spacing:3px;
+    }
+
+    .story-content h2{
+      font-size:clamp(40px,5vw,68px);
+      line-height:1;
+      margin:18px 0 25px;
+    }
+
+    .story-content p{
+      color:var(--muted);
+      line-height:1.9;
+      margin-bottom:25px;
+    }
+
+    /* PAYMENT */
+    .payment{
+      padding:35px;
+      border:1px solid rgba(215,174,103,.35);
+      background:
+        radial-gradient(circle at top right,rgba(215,174,103,.12),transparent 35%),
+        var(--card);
+      border-radius:25px;
+      text-align:center;
+    }
+
+    .payment .bkash{
+      color:#ff4f96;
+      font-size:28px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .number{
+      font-family:Arial,sans-serif;
+      font-size:clamp(24px,4vw,42px);
+      font-weight:800;
+      letter-spacing:2px;
+      color:var(--gold2);
+      margin:15px 0;
+    }
+
+    .payment p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      max-width:700px;
+      margin:auto;
+    }
+
+    /* CONTACT */
+    .contact-box{
+      text-align:center;
+      padding:80px 20px;
+      border-radius:28px;
+      background:
+        linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+        url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .contact-box h2{
+      font-size:clamp(42px,6vw,75px);
+      margin-bottom:15px;
+    }
+
+    .contact-box p{
+      color:#d5cec6;
+      max-width:600px;
+      margin:0 auto 30px;
+    }
+
+    .whatsapp{
+      background:#25D366;
+      color:#07130b;
+      font-weight:800;
+    }
+
+    /* CART DRAWER */
+    .cart-drawer{
+      position:fixed;
+      top:0;
+      right:-450px;
+      width:min(420px,100%);
+      height:100vh;
+      background:#101010;
+      z-index:2000;
+      padding:25px;
+      border-left:1px solid var(--line);
+      transition:.4s;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .cart-drawer.active{
+      right:0;
+    }
+
+    .cart-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding-bottom:20px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .close-cart{
+      background:none;
+      border:none;
+      color:white;
+      font-size:25px;
+    }
+
+    .cart-items{
+      flex:1;
+      overflow:auto;
+      padding:15px 0;
+    }
+
+    .cart-item{
+      display:flex;
+      justify-content:space-between;
+      gap:15px;
+      padding:15px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .remove{
+      background:none;
+      border:none;
+      color:#e47c7c;
+      font-size:12px;
+    }
+
+    .cart-footer{
+      border-top:1px solid var(--line);
+      padding-top:20px;
+    }
+
+    .total{
+      display:flex;
+      justify-content:space-between;
+      font-size:19px;
+      font-weight:800;
+      margin-bottom:15px;
+    }
+
+    .checkout{
+      width:100%;
+    }
+
+    /* WHATSAPP FLOAT */
+    .float-wa{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:58px;
+      height:58px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#25D366;
+      color:#06110a;
+      font-size:24px;
+      z-index:999;
+      box-shadow:0 10px 35px rgba(37,211,102,.25);
+    }
+
+    footer{
+      padding:40px 0;
+      border-top:1px solid var(--line);
+      text-align:center;
+      color:#777;
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      .nav-links{
+        display:none;
+      }
+
+      .collection-grid,
+      .story{
+        grid-template-columns:1fr;
+      }
+
+      .products{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .feature:nth-child(2){
+        border-right:none;
+      }
+
+      .section-top{
+        display:block;
+      }
+
+      .section-top p{
+        margin-top:20px;
+      }
+    }
+
+    @media(max-width:550px){
+      .products{
+        grid-template-columns:1fr;
+      }
+
+      .feature-grid{
+        grid-template-columns:1fr;
+      }
+
+      .feature{
+        border-right:none;
+        border-bottom:1px solid var(--line);
+      }
+
+      .hero h1{
+        letter-spacing:-2px;
+      }
+
+      .btn-outline{
+        margin:10px 0 0;
+      }
+
+      section{
+        padding:70px 0;
+      }
+    }
   </style>
 </head>
+
 <body>
-<div class="overlay">
 
-<header>
-  <h1>👻 পেত্নী JEWELRY 👻</h1>
-  <p>Cash On Delivery সারা বাংলাদেশে</p>
-</header>
-
-<div class="container">
-  <div class="products">
-    <div class="card">
-      <img src="https://i.ibb.co.com/4gB5W8q/ring.jpg">
-      <div class="card-body">
-        <div class="category">Bridal Collection</div>
-        <div class="title">Silver Leaf Vine Zircon Set</div>
-        <div class="price">1,350.00৳</div>
-        <button class="btn-order" onclick="buyNow('Silver Leaf Vine Zircon Set', 1350)">ORDER NOW</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://i.ibb.co.com/2kQ1X9m/earring.jpg">
-      <div class="card-body">
-        <div class="category">Jewellery Sets</div>
-        <div class="title">Gold Teardrop Filigree Set</div>
-        <div class="price">1,850.00৳</div>
-        <button class="btn-order" onclick="buyNow('Gold Teardrop Filigree Set', 1850)">ORDER NOW</button>
-      </div>
-    </div>
+  <div class="announcement">
+    ✦ পেত্নী ফ্যাশন — স্টাইলিশ ফ্যাশন, প্রিমিয়াম অনুভূতি ✦
   </div>
 
-  <div class="form-section" id="orderForm" style="display:none;">
-    <h2>অর্ডার কনফার্ম করুন 📝</h2>
-    <div class="cod-box">✅ Cash On Delivery<br><small>প
+  <nav>
+    <div class="container nav-wrap">
+
+      <a href="#" class="logo">পেত্নী <span>ফ্যাশন</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#home">হোম</a></li>
+        <li><a href="#collections">কালেকশন</a></li>
+        <li><a href="#products">নিউ অ্যারাইভাল</a></li>
+        <li><a href="#about">আমাদের গল্প</a></li>
+        <li><a href="#payment">পেমেন্ট</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="openCart()">
+          🛍 কার্ট <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+
+        <div class="eyebrow">Petni Fashion • Premium Collection</div>
+
+        <h1>
+          আপনার স্টাইল,<br>
+          <span style="color:var(--gold)">আপনার পরিচয়।</span>
+        </h1>
+
+        <p>
+          আধুনিক ফ্যাশন, এলিগ্যান্ট ডিজাইন এবং প্রিমিয়াম
+          অনুভূতির এক অনন্য ঠিকানা — পেত্নী ফ্যাশন।
+        </p>
+
+        <a href="#products" class="btn btn-gold">Shop The Collection →</a>
+        <a href="#about" class="btn btn-outline">আমাদের সম্পর্কে</a>
+
+      </div>
+    </section>
+
+    <!-- COLLECTION -->
+    <section id="collections">
+      <div class="container">
+
+        <div class="section-top">
+          <div>
+            <small>Curated For You</small>
+            <h2>Signature Collections</h2>
+          </div>
+
+          <p>
+            প্রতিটি কালেকশন বাছাই করা হয়েছে আধুনিক স্টাইল,
+            কমফোর্ট এবং প্রিমিয়াম লুকের কথা মাথায় রেখে।
+          </p>
+        </div>
+
+        <div class="collection-grid">
+
+          <div class="collection c1">
+            <div class="collection-content">
+              <h3>New Arrival</h3>
+              <p>সিজনের সবচেয়ে স্টাইলিশ নতুন কালেকশন</p>
+              <a href="#products" class="btn btn-gold">Explore →</a>
+            </div>
+          </div>
+
+          <div class="collection c2">
+            <div class="collection-content">
+              <h3>Everyday Luxe</h3>
+              <p>প্রতিদিনের জন্য প্রিমিয়াম স্টাইল</p>
+              <a href="#products" class="btn btn-gold">Explore →</a>
+            </div>
+          </div>
+
+          <div class="collection c3">
+            <div class="collection-content">
+              <h3>Exclusive Edit</h3>
+              <p>সীমিত ও বিশেষ ডিজাইনের সংগ্রহ</p>
+              <a href="#products" class="btn btn-gold">Explore →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" style="background:#0d0d0d;">
+      <div class="container">
+
+        <div class="section-top">
+          <div>
+            <small>Shop Now</small>
+            <h2>Best Sellers</h2>
+          </div>
+
+          <p>
+            নিচের পণ্যগুলোর নাম, ছবি এবং দাম আপনি
+            নিজের আসল পণ্যের তথ্য দিয়ে পরিবর্তন করতে পারবেন।
+          </p>
+        </div>
+
+        <div class="products">
+
+          <article class="product">
+            <div class="product-img">
+              <span class="tag">BEST SELLER</span>
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85" alt="Premium Dress">
+            </div>
+
+            <div class="product-info">
+              <h3>Premium Silk Dress</h3>
+              <div class="price">৳ 2,490</div>
+              <button class="add-cart" onclick="addToCart('Premium Silk Dress',2490)">
+                কার্টে যোগ করুন
+              </button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-img">
+              <span class="tag">NEW</span>
+              <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85" alt="Luxury Outfit">
+            </div>
+
+            <div class="product-info">
+              <h3>Luxury Casual Set</h3>
+              <div class="price">৳ 1,890</div>
+              <button class="add-cart" onclick="addToCart('Luxury Casual Set',1890)">
+                কার্টে যোগ করুন
+              </button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-img">
+              <span class="tag">LIMITED</span>
+              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85" alt="Elegant Fashion">
+            </div>
+
+            <div class="product-info">
+              <h3>Elegant Signature Look</h3>
+              <div class="price">৳ 2,990</div>
+              <button class="add-cart" onclick="addToCart('Elegant Signature Look',2990)">
+                কার্টে যোগ করুন
+              </button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-img">
+              <span class="tag">EXCLUSIVE</span>
+              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85" alt="Fashion Collection">
+            </div>
+
+            <div class="product-info">
+              <h3>Exclusive Evening Wear</h3>
+              <div class="price">৳ 3,490</div>
+              <button class="add-cart" onclick="addToCart('Exclusive Evening Wear',3490)">
+                কার্টে যোগ করুন
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <div class="feature-strip">
+      <div class="container feature-grid">
+
+        <div class="feature">
+          <b>✦ Premium Quality</b>
+          <span>বাছাই করা উন্নতমানের পণ্য</span>
+        </div>
+
+        <div class="feature">
+          <b>🚚 Fast Delivery</b>
+          <span>দ্রুত অর্ডার প্রসেসিং</span>
+        </div>
+
+        <div class="feature">
+          <b>💬 Easy Support</b>
+          <span>WhatsApp-এ সরাসরি যোগাযোগ</span>
+        </div>
+
+        <div class="feature">
+          <b>🔒 Secure Order</b>
+          <span>নিরাপদ অর্ডার প্রক্রিয়া</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container story">
+
+        <div class="story-image"></div>
+
+        <div class="story-content">
+          <small>THE PETNI FASHION STORY</small>
+
+          <h2>
+            Fashion That<br>
+            Feels Different.
+          </h2>
+
+          <p>
+            পেত্নী ফ্যাশন শুধু পোশাক নয়—এটি আপনার ব্যক্তিত্ব,
+            আত্মবিশ্বাস এবং নিজস্ব স্টাইল প্রকাশের একটি মাধ্যম।
+          </p>
+
+          <p>
+            আমাদের লক্ষ্য হলো এমন একটি ফ্যাশন অভিজ্ঞতা তৈরি করা,
+            যেখানে প্রতিটি পণ্য হবে স্টাইলিশ, সুন্দর এবং বিশেষ।
+          </p>
+
+          <a href="#products" class="btn btn-gold">আমাদের কালেকশন দেখুন →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAYMENT -->
+    <section id="payment">
+      <div class="container">
+
+        <div class="payment">
+
+          <div class="eyebrow">Easy Payment</div>
+
+          <div class="bkash">bKash Payment</div>
+
+          <div class="number">01312101940</div>
+
+          <p>
+            অর্ডার কনফার্ম করার আগে নির্ধারিত টাকা এই নম্বরে
+            bKash করুন। পেমেন্ট সম্পন্ন হলে আপনার Transaction ID
+            আমাদের WhatsApp-এ পাঠান।
+          </p>
+
+          <br>
+
+          <a
+            class="btn whatsapp"
+            target="_blank"
+            href="https://wa.me/8801312101940?text=আসসালামু%20আলাইকুম,%20আমি%20পেত্নী%20ফ্যাশন%20থেকে%20অর্ডার%20করতে%20চাই।"
+          >
+            WhatsApp-এ অর্ডার করুন 💬
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <div class="container">
+
+        <div class="contact-box">
+
+          <div class="eyebrow">Let's Talk Fashion</div>
+
+          <h2>আপনার নতুন স্টাইল<br>আজই খুঁজে নিন।</h2>
+
+          <p>
+            অর্ডার, পণ্যের বিস্তারিত বা যেকোনো তথ্যের জন্য
+            সরাসরি WhatsApp-এ আমাদের সাথে যোগাযোগ করুন।
+          </p>
+
+          <a
+            href="https://wa.me/8801312101940?text=আসসালামু%20আলাইকুম,%20আমি%20পেত্নী%20ফ্যাশন%20সম্পর্কে%20জানতে%20চাই।"
+            target="_blank"
+            class="btn whatsapp"
+          >
+            💬 WhatsApp করুন — 01312101940
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CART -->
+  <aside class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-header">
+      <h2>আপনার কার্ট</h2>
+      <button class="close-cart" onclick="closeCart()">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <p style="color:#777;text-align:center;margin-top:30px;">
+        আপনার কার্ট এখন খালি।
+      </p>
+    </div>
+
+    <div class="cart-footer">
+
+      <div class="total">
+        <span>মোট</span>
+        <span id="cartTotal">৳ 0</span>
+      </div>
+
+      <button class="btn btn-gold checkout" onclick="checkoutWhatsApp()">
+        WhatsApp-এ অর্ডার কনফার্ম করুন →
+      </button>
+
+    </div>
+
+  </aside>
+
+  <!-- FLOATING WHATSAPP -->
+  <a
+    class="float-wa"
+    target="_blank"
+    href="https://wa.me/8801312101940"
+    title="WhatsApp করুন"
+  >
+    💬
+  </a>
+
+  <footer>
+    <div class="container">
+      © 2026 <b style="color:var(--gold)">পেত্নী ফ্যাশন</b> —
+      Premium Fashion Experience.
+    </div>
+  </footer>
+
+  <script>
+
+    let cart = [];
+
+    function openCart(){
+      document.getElementById("cartDrawer").classList.add("active");
+    }
+
+    function closeCart(){
+      document.getElementById("cartDrawer").classList.remove("active");
+    }
+
+    function addToCart(name, price){
+
+      const existing = cart.find(item => item.name === name);
+
+      if(existing){
+        existing.qty += 1;
+      }else{
+        cart.push({
+          name:name,
+          price:price,
+          qty:1
+        });
+      }
+
+      updateCart();
+      openCart();
+    }
+
+    function removeItem(index){
+      cart.splice(index,1);
+      updateCart();
+    }
+
+    function updateCart(){
+
+      const cartItems = document.getElementById("cartItems");
+      const cartCount = document.getElementById("cartCount");
+      const cartTotal = document.getElementById("cartTotal");
+
+      let total = 0;
+      let count = 0;
+
+      if(cart.length === 0){
+
+        cartItems.innerHTML = `
+          <p style="color:#777;text-align:center;margin-top:30px;">
+            আপনার কার্ট এখন খালি।
+          </p>
+        `;
+
+      }else{
+
+        cartItems.innerHTML = "";
+
+        cart.forEach((item,index) => {
+
+          total += item.price * item.qty;
+          count += item.qty;
+
+          cartItems.innerHTML += `
+            <div class="cart-item">
+
+              <div>
+                <b>${item.name}</b>
+                <div style="color:#d7ae67;margin-top:5px;">
+                  ৳ ${item.price.toLocaleString()} × ${item.qty}
+                </div>
+              </div>
+
+              <button class="remove" onclick="removeItem(${index})">
+                Remove
+              </button>
+
+            </div>
+          `;
+        });
+      }
+
+      cartCount.textContent = count;
+      cartTotal.textContent = "৳ " + total.toLocaleString();
+    }
+
+    function checkoutWhatsApp(){
+
+      if(cart.length === 0){
+        alert("আপনার কার্ট খালি!");
+        return;
+      }
+
+      let message = "আসসালামু আলাইকুম, আমি পেত্নী ফ্যাশন থেকে অর্ডার করতে চাই।%0A%0A";
+
+      let total = 0;
+
+      cart.forEach((item,index) => {
+
+        message += `${index + 1}. ${item.name} - ${item.qty} টি - ৳ ${item.price * item.qty}%0A`;
+
+        total += item.price * item.qty;
+      });
+
+      message += `%0Aমোট টাকা: ৳ ${total}%0A%0A`;
+      message += "নাম:%0Aঠিকানা:%0Aমোবাইল নম্বর:%0A";
+      message += "bKash পেমেন্ট নম্বর: 01312101940";
+
+      window.open(
+        "https://wa.me/8801312101940?text=" + message,
+        "_blank"
+      );
+    }
+
+  </script>
+
+</body>
+</html>
+```
