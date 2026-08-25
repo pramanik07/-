@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>পেত্নী | Petni Jewelry</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap');
+    *{margin:0; padding:0; box-sizing:border-box;}
+    body{font-family:'Hind Siliguri', sans-serif; background:#FFF5F9; color:#333;}
+    
+    header{background:linear-gradient(90deg,#FF66B3,#FF99CC); color:#fff; padding:25px; text-align:center; box-shadow:0 4px 20px rgba(255,102,179,0.3);}
+    header h1{font-size:2.8rem; text-shadow:0 2px 10px rgba(0,0,0,0.2);}
+    
+    .container{max-width:1200px; margin:auto; padding:40px 15px;}
+    .products{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:30px;}
+    
+    .card{background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 8px 25px rgba(255,102,179,0.15); transition:0.4s; border:2px solid #FFE0F0;}
+    .card:hover{transform:translateY(-8px) scale(1.02);}
+    .card img{width:100%; height:350px; object-fit:cover;}
+    .card-body{padding:20px;}
+    .category{font-size:0.9rem; color:#FF66B3; font-weight:600;}
+    .title{font-size:1.3rem; font-weight:700; margin:8px 0;}
+    .price{font-size:1.5rem; font-weight:800; color:#FF0099; margin-bottom:15px;}
+    .btn{width:100%; padding:14px; border:none; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; margin-top:10px;}
+    .btn-cart{background:#FFE0F0; color:#FF0099;}
+    .btn-buy{background:linear-gradient(90deg,#FF66B3,#FF3399); color:#fff;}
+    
+    .form-section{background:#fff; padding:40px 25px; margin-top:60px; border-radius:20px; box-shadow:0 8px 25px rgba(255,102,179,0.15); border:2px solid #FFE0F0;}
+    .form-section h2{margin-bottom:25px; color:#FF0099; border-bottom:3px solid #FF66B3; padding-bottom:10px;}
+    .form-group{margin-bottom:18px;}
+    .form-group label{display:block; font-weight:700; margin-bottom:6px; color:#FF3399;}
+    .form-group input, .form-group select{width:100%; padding:14px; border:2px solid #FFE0F0; border-radius:12px; font-size:1rem; background:#FFF5F9;}
+    
+    .payment{background:#FFF0F7; padding:20px; border-radius:15px; margin-top:25px; border:2px dashed #FF99CC;}
+    .payment label{display:flex; align-items:center; gap:12px; margin:12px 0; font-size:1.1rem; cursor:pointer; font-weight:600; padding:10px; border-radius:10px;}
+    .payment label:hover{background:#FFE0F0;}
+    .bkash-logo{width:70px;}
+    #trxBox{display:none; margin-top:10px;}
+    
+    .place-order{width:100%; padding:18px; background:linear-gradient(90deg,#FF66B3,#FF3399); color:#fff; border:none; border-radius:15px; font-size:1.3rem; font-weight:800; margin-top:25px; cursor:pointer;}
+    
+    .whatsapp{position:fixed; bottom:20px; right:20px; background:#25D366; width:65px; height:65px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 5px 20px rgba(37,211,102,0.5);}
+  </style>
+</head>
+<body>
 
+<header>
+  <h1>👻 পেত্নী JEWELRY 👻</h1>
+</header>
+
+<div class="container">
+  <div class="products">
+    <div class="card">
+      <img src="https://i.ibb.co.com/4gB5W8q/ring.jpg">
+      <div class="card-body">
+        <div class="category">Bridal Collection</div>
+        <div class="title">Silver Leaf Vine Zircon Set</div>
+        <div class="price">1,350.00৳</div>
+        <button class="btn btn-cart" onclick="addToCart('Silver Leaf Vine Zircon Set', 1350)">ADD TO CART</button>
+        <button class="btn btn-buy" onclick="buyNow('Silver Leaf Vine Zircon Set', 1350)">BUY NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section" id="orderForm" style="display:none;">
+    <h2>Billing Details 📝</h2>
+    <div class="form-group"><label>First name *</label><input type="text" id="name"></div>
+    <div class="form-group"><label>Street address *</label><input type="text" id="address"></div>
+    <div class="form-group"><label>Town / City *</label><input type="text" id="city"></div>
+    <div class="form-group"><label>District *</label>
+      <select id="district"><option>Rajshahi</option><option>Dhaka</option></select>
+    </div>
+    <div class="form-group"><label>Phone *</label><input type="tel" id="phone"></div>
+
+    <div class="payment">
+      <h3>Payment Method 💳</h3>
+      <label>
+        <input type="radio" name="pay" value="COD" checked> 
+        Cash on delivery
+      </label>
+      <label onclick="openBkashApp()">
+        <input type="radio" name="pay" value="bKash"> 
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/bKash_logo.svg/320px-bKash_logo.svg.png" class="bkash-logo">
+        <div>
+          <b>bKash Payment</b><br>
+          <small>01312101940 নাম্বারে টাকা পাঠান</small>
+        </div>
+      </label>
+      <div id="trxBox">
+        <input type="text" id="trx" placeholder="bKash TrxID এখানে দিন">
+      </div>
+    </div>
+
+    <button class="place-order" onclick="placeOrder()">PLACE ORDER ✨</button>
+  </div>
+</div>
+
+<a href="https://wa.me/8801312101940" class="whatsapp" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="38">
+</a>
+
+<script>
+let selectedProduct = '';
+let selectedPrice = 0;
+
+function addToCart(p, price){ alert(p + ' কার্টে অ্যাড হয়েছে 🛒'); }
+function buyNow(p, price){
+  selectedProduct = p; selectedPrice = price;
+  document.getElementById('orderForm').style.display = 'block';
+  window.scrollTo({top: document.getElementById('orderForm').offsetTop, behavior: 'smooth'});
+}
+
+function openBkashApp(){
+  document.getElementById('trxBox').style.display = 'block';
+  // মোবাইলে সরাসরি বিকাশ অ্যাপ ওপেন করার লিংক
+  setTimeout(() => {
+    window.location.href = "bkash://send?receiver=01312101940&amount=" + selectedPrice;
+  }, 200);
+}
+
+function placeOrder(){
+  let name = document.getElementById('name').value;
+  let address = document.getElementById('address').value;
+  let city = document.getElementById('city').value;
+  let district = document.getElementById('district').value;
+  let phone = document.getElementById('phone').value;
+  let pay = document.querySelector('input[name="pay"]:checked').value;
+  let trx = document.getElementById('trx').value;
+  
+  if(!name || !address || !city || !district || !phone){ alert('সব ঘর পূরণ করো পেত্নী 😘'); return; }
+  if(pay=='bKash' && trx==''){ alert('bKash TrxID দিন'); return; }
+  
+  let msg = `নতুন অর্ডার - পেত্নী%0A%0Aপ্রোডাক্ট: ${selectedProduct}%0Aদাম: ${selectedPrice}৳%0Aপেমেন্ট: ${pay}%0ATrxID: ${trx}%0Aনাম: ${name}%0Aফোন: ${phone}%0Aঠিকানা: ${address}, ${city}, ${district}`;
+  window.open(`https://wa.me/8801312101940?text=${msg}`, '_blank');
+}
+</script>
+
+</body>
+</html>
