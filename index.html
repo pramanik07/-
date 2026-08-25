@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORLENA Jewelry</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#f7f7f5;color:#222}
+header{position:sticky;top:0;background:#fff;z-index:10;border-bottom:1px solid #eee}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.icon{font-size:27px;background:none;border:0;color:#222;cursor:pointer}.brand{font-family:Georgia,serif;font-size:30px;letter-spacing:5px}
+.actions{display:flex;gap:12px;align-items:center}.cart-count{font-size:13px;background:#111;color:#fff;border-radius:50%;padding:2px 6px;margin-left:-20px;margin-top:-20px}
+.hero{padding:28px 20px 10px;text-align:center;background:#ece8e1}.hero h1{font-family:Georgia,serif;letter-spacing:2px;margin:0;font-size:32px}.hero p{color:#666}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:14px}
+.card{background:#fff;position:relative;padding-bottom:14px}.photo{height:205px;background:#ddd center/cover no-repeat}
+.sale{position:absolute;top:185px;left:10px;background:#151515;color:#fff;border:1px solid #555;border-radius:28px;padding:10px 20px;font-size:16px}
+.info{padding:14px 10px 0}.name{font-size:17px;line-height:1.45;min-height:52px}.old{color:#777;text-decoration:line-through;margin:8px 0}.price{font-size:21px;letter-spacing:1px}.add{width:100%;margin-top:12px;padding:10px;border:1px solid #222;background:#fff;font-size:14px;cursor:pointer}
+.drawer{position:fixed;top:0;right:-100%;width:min(390px,100%);height:100%;background:#fff;z-index:30;box-shadow:-5px 0 20px #0003;transition:.3s;padding:20px;overflow:auto}.drawer.open{right:0}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:15px}.close{font-size:28px;border:0;background:none}
+.cart-item{display:flex;gap:10px;padding:15px 0;border-bottom:1px solid #eee}.cart-item img{width:65px;height:65px;object-fit:cover}.remove{margin-left:auto;border:0;background:none;font-size:18px}
+.total{font-size:22px;margin:20px 0}.checkout{width:100%;padding:15px;background:#111;color:#fff;border:0;font-size:17px}
+.payment{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.payment button{padding:13px;border:1px solid #ddd;background:#f7f7f7;font-weight:bold}
+footer{text-align:center;padding:35px 20px;color:#666;font-size:14px}
+@media(min-width:700px){.products{grid-template-columns:repeat(4,1fr);max-width:1200px;margin:auto}.photo{height:270px}.sale{top:250px}.hero{padding:45px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <button class="icon" onclick="alert('মেনু পরে যোগ করা যাবে')">☰</button>
+    <div class="brand">ORLENA</div>
+    <div class="actions"><button class="icon" onclick="searchProduct()">⌕</button><button class="icon" onclick="toggleCart()">🛍</button><span class="cart-count" id="count">0</span></div>
+  </div>
+</header>
+
+<section class="hero"><h1>Elegant Jewelry Collection</h1><p>নিজের সৌন্দর্যকে আরও বিশেষ করে তুলুন ✨</p></section>
+<main class="products" id="products"></main>
+<footer>© 2026 ORLENA Jewelry Store • All Rights Reserved</footer>
+
+<aside class="drawer" id="drawer">
+ <div class="drawer-head"><h2>আপনার Cart</h2><button class="close" onclick="toggleCart()">×</button></div>
+ <div id="cartItems"><p>আপনার কার্ট খালি।</p></div>
+ <div class="total">মোট: <span id="total">Tk 0.00 BDT</span></div>
+ <button class="checkout" onclick="checkout()">Checkout</button>
+ <div class="payment"><button onclick="pay('bKash')">bKash</button><button onclick="pay('Nagad')">Nagad</button></div>
+ <small style="display:block;margin-top:12px;color:#777">নোট: বাস্তব bKash/Nagad অটো পেমেন্ট চালু করতে Merchant API/Payment Gateway সংযোগ করতে হবে।</small>
+</aside>
+
+<script>
+const products=[
+ {id:1,name:"Celeste Teardrop Diamond-Look Jewelry Set",old:1080,price:840,img:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80"},
+ {id:2,name:"Bloom of Love Necklace",old:680,price:520,img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=700&q=80"},
+ {id:3,name:"Emerald Clover Pendant Necklace",old:690,price:480,img:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80"},
+ {id:4,name:"Emerald Elegance Crystal Set",old:1080,price:850,img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=700&q=80"},
+ {id:5,name:"Moonlight Crystal Necklace",old:900,price:720,img:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80"},
+ {id:6,name:"Blue Blossom Pendant",old:750,price:590,img:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=80"}
+];
+let cart=JSON.parse(localStorage.getItem("orlenaCart")||"[]");
+const money=n=>"Tk "+n.toFixed(2)+" BDT";
+function renderProducts(list=products){
+ document.getElementById("products").innerHTML=list.map(p=>`<article class="card">
+ <div class="photo" style="background-image:url('${p.img}')"></div><span class="sale">Sale</span>
+ <div class="info"><div class="name">${p.name}</div><div class="old">${money(p.old)}</div><div class="price">${money(p.price)}</div>
+ <button class="add" onclick="addToCart(${p.id})">Add to Cart</button></div></article>`).join("");
+}
+function addToCart(id){let p=products.find(x=>x.id===id);cart.push(p);saveCart();toggleCart()}
+function saveCart(){localStorage.setItem("orlenaCart",JSON.stringify(cart));document.getElementById("count").textContent=cart.length;renderCart()}
+function renderCart(){
+ let box=document.getElementById("cartItems"),total=cart.reduce((s,p)=>s+p.price,0);
+ box.innerHTML=cart.length?cart.map((p,i)=>`<div class="cart-item"><img src="${p.img}"><div><b>${p.name}</b><br>${money(p.price)}</div><button class="remove" onclick="removeItem(${i})">×</button></div>`).join(""):"<p>আপনার কার্ট খালি।</p>";
+ document.getElementById("total").textContent=money(total);
+}
+function removeItem(i){cart.splice(i,1);saveCart()}
+function toggleCart(){document.getElementById("drawer").classList.toggle("open");renderCart()}
+function checkout(){if(!cart.length)return alert("আগে কার্টে পণ্য যোগ করুন।");alert("Checkout পেজের পরবর্তী ধাপে ডেলিভারি তথ্য ও পেমেন্ট যুক্ত করা হবে।")}
+function pay(method){if(!cart.length)return alert("আগে কার্টে পণ্য যোগ করুন।");alert(method+" পেমেন্ট বাটন প্রস্তুত। বাস্তব পেমেন্টের জন্য Merchant Account/API সংযোগ করতে হবে।")}
+function searchProduct(){let q=prompt("কোন পণ্য খুঁজছেন?");if(q!==null)renderProducts(products.filter(p=>p.name.toLowerCase().includes(q.toLowerCase())))}
+renderProducts();saveCart();
+</script>
+</body></html>
